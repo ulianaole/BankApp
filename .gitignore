@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/BankApp/v15/Server/sqlite3
+/BankApp/bin/Debug
+/BankApp/obj/Debug
+/.vs/BankApp/v15
