@@ -22,7 +22,7 @@ namespace BankApp
                 Console.WriteLine("3. Withdraw");
                 Console.WriteLine("4. Print all accounts");
 
-                Console.Write("Please choose one option from above");
+                Console.Write("Please choose one option from above: ");
                 var choice = Console.ReadLine();
 
                 switch (choice)
@@ -43,7 +43,7 @@ namespace BankApp
                         Console.Write("type of account: ");
                         var accountType = Convert.ToInt32(Console.ReadLine());
                         var account = Bank.CreateAccount(emailAddress, accountName, (TypeOfAccount)(accountType - 1));
-                        Console.WriteLine($"AN:{account.AccountNumber}, Balance:{account.Balance}, TA: {account.AccountType}");
+                        Console.WriteLine($"AN: {account.AccountNumber}, Balance: {account.Balance}, TA: {account.AccountType}");
                         break;
                     case "2":
                         PrintAllAccounts();
@@ -70,7 +70,9 @@ namespace BankApp
 
         private static void PrintAllAccounts()
         {
-            var accounts = Bank.GetAllAccounts();
+            Console.Write("Email Address: ");
+            var emailAddress = Console.ReadLine();
+            var accounts = Bank.GetAllAccounts(emailAddress);
             foreach (var acnt in accounts)
             {
                 Console.WriteLine($"AN:{acnt.AccountNumber}, Balance:{acnt.Balance}, TA: {acnt.AccountType}");
