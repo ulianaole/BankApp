@@ -8,12 +8,22 @@ namespace BankApp
 {
     static class Bank
     {
-        private static BankModel db = new BankModel();     
+        private static BankModel db = new BankModel();
 
+        /// <summary>
+        /// Create a bank account
+        /// </summary>
+        /// <param name="emailAddress">Email address for the account
+        /// <param name="accountName"><Name of the account
+        /// <param name="accountType">Typnte of accou
+        /// <returns>The bank accont</returns>
+        /// <exception cref = 
         public static Account CreateAccount(string emailAddress, 
             string accountName = "Default Account",
             TypeOfAccount accountType = TypeOfAccount.Checking)
         {
+            if (string.IsNullOrEmpty(emailAddress))
+                throw new ArgumentNullException("emailAddress", "Email Address can not be empty.");
             var account = new Account
             {
                 EmailAddress = emailAddress,

@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201801130142531_Transactions.Designer.cs">
       <DependentUpon>201801130142531_Transactions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801132027243_ModelCleanup.cs" />
+    <Compile Include="Migrations\201801132027243_ModelCleanup.Designer.cs">
+      <DependentUpon>201801132027243_ModelCleanup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801130142531_Transactions.resx">
       <DependentUpon>201801130142531_Transactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801132027243_ModelCleanup.resx">
+      <DependentUpon>201801132027243_ModelCleanup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
