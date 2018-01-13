@@ -21,6 +21,7 @@ namespace BankApp
                 Console.WriteLine("2. Deposit");
                 Console.WriteLine("3. Withdraw");
                 Console.WriteLine("4. Print all accounts");
+                Console.WriteLine("5. Print all transactions");
 
                 Console.Write("Please choose one option from above: ");
                 var choice = Console.ReadLine();
@@ -57,7 +58,16 @@ namespace BankApp
                         break;
                     case "4":
                         PrintAllAccounts();
-
+                        break;
+                    case "5":
+                        PrintAllAccounts();
+                        Console.Write("Account Number:  ");
+                        an = Convert.ToInt32(Console.ReadLine());
+                        var transactions = Bank.GetAllTransactions(an);
+                        foreach (var tran in transactions)
+                        {
+                            Console.WriteLine($"Tid: {tran.TransactionId}, TT: {tran.TypeOfTransaction}, TA: {tran.TransactionAmount}, TD: {tran.TransactionDate}, Description: {tran.Description}");
+                        }
                         break;
                     default:
                         Console.WriteLine("Invalid choice! Please try again!");
