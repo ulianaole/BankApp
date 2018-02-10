@@ -42,12 +42,21 @@ namespace BankApp
             if (account == null)
                 throw new ArgumentNullException("account", "Invalid account");
 
-            var oldAccount = db.Accounts.Find(account.AccountNumber);
+            Account oldAccount = FindAccount(account.AccountNumber);
+            oldAccount.EmailAddress = account.EmailAddress;
+            oldAccount.AccountName = account.AccountName;
+            oldAccount.AccountType = account.AccountType;
+            db.SaveChanges(); 
+            return account;
+        }
+
+        public static Account FindAccount(int accountNumber)
+        {
+            
+            var oldAccount = db.Accounts.Find(accountNumber);
             if (oldAccount == null)
                 throw new ArgumentOutOfRangeException("account", "Invalid accont number!");
-            db.Entry(oldAccount).CurrentValues.SetValues(account);
-            db.SaveChanges();
-            return account;
+            return oldAccount;
         }
 
         public static List<Account> GetAllAccounts(string emailAddress)
@@ -72,7 +81,7 @@ namespace BankApp
                     TransactionDate = DateTime.Now,
                     TypeOfTransaction = TransactionType.Credit,
                     TransactionAmount = amount,
-                    Description = "Desposit in a branch",
+                    Description = "Deposit in a branch",
                     AccountNumber = account.AccountNumber
 
                 };
